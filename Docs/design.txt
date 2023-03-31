@@ -1,0 +1,20 @@
+Objects :
+    Car:
+        Attr:
+            name
+            model name
+            year
+            type
+            price
+
+    Customer:
+        Attr:
+            Id
+            name
+            phone
+            
+    TestDriveOrders:
+        Attr:
+            Cust Id
+
+
