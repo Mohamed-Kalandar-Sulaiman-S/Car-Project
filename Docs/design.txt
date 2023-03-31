@@ -6,13 +6,18 @@ Objects :
             year
             type
             price
+        Functions:
+            __attr__
 
     Customer:
         Attr:
             Id
             name
             phone
-            
+            car name 
+            model name
+            dateoftestdrive
+
     TestDriveOrders:
         Attr:
             Cust Id

@@ -6,10 +6,10 @@ define models for the car
 
 develop a booking CLI which gets following input:
 
-phone number(PK)
-name 
-model required
-dateoftestdrive
+    phone number(PK)
+    name 
+    model required
+    dateoftestdrive
 
 
 As a admin when a showroom manager should be able check mostly drived test vehicles at the end of month
