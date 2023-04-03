@@ -38,12 +38,14 @@ def display_admin_menu()->None:
     run = True
     while run:
         print("Admin Menu")
-        print("\t1.Check most test drived cars\n\t2.Print cars available \n\t9.Exit Admin Console")
+        print("\t1.Check most test drived cars\n\t2.Print cars available \n\t3.Print Orders \n\t9.Exit Admin Console")
         choice = get_option()
         if choice == 1 :
-            print("Car details :")
+            most_test_drived_cars()
         elif choice ==2 :
-            print("Print car details...")
+            print_cars(CATALOGUE)
+        elif choice ==3:
+            print_orders()
         elif choice == 9:
             print("Logging out as Admin....")
             run = False
@@ -53,6 +55,38 @@ def display_admin_menu()->None:
             time.sleep(2)
             clear_screen()
 
+
+def print_orders():
+    for order in CUSTOMERS:
+        print(order)
+
+
+
+def most_test_drived_cars():
+    print("*********************************")
+    car_name = input("Enter Car name : ")
+    if car_name not in CATALOGUE.keys():
+        print("No such car exists ......")
+        return
+   
+    count = dict()
+    
+    for customer in CUSTOMERS:
+        if car_name == customer.car_name[0]:
+            if customer.model_name[0] not in count.keys():
+                count[customer.model_name[0]] = 1
+            else:
+                count[customer.model_name[0]] +=1
+    print(count)
+    most_test_drived_name = None
+    most_test_drived_count = 0
+    for model in count.keys():
+        if count[model] > most_test_drived_count:
+            most_test_drived_name = model
+            most_test_drived_count = count[model]
+    print("Most test drived models : " , most_test_drived_name)
+    print("Most test drived model count  : " , most_test_drived_count)
+    print("*********************************")
 
 
 
@@ -86,10 +120,14 @@ def book_test_drive()->None:
         month = int(raw[1])
         year = int(raw[2])
         date_obj = datetime.date(year=year , month=month , day=day)
-        print(date_obj , "mehhh")
+        return date_obj
     dateOfTestDrive = extract_date(date = dateOfTestDrive)
     customer = Customers(name=name , phone_number=phone , car_name=car_name , model_name=model_name,datOfTestDrive=dateOfTestDrive)
     CUSTOMERS.append(customer)
+    print("Your Order has been accepted !!!")
+    print(customer)
+    time.sleep(2)
+    clear_screen()
 
 
 def get_option()->int:
